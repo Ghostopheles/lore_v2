@@ -7,5 +7,5 @@ export default defineConfig({
     trailingSlash: "always",
     image: {
         domains: ["ghst.tools"],
-    },
+    }
 });
