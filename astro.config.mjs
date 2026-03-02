@@ -7,6 +7,7 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
     integrations: [embeds(), mdx()],
+    output: "server",
     site: "https://lore.ghst.tools",
     trailingSlash: "always",
     image: {

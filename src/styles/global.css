@@ -67,6 +67,17 @@
   /* Transitions */
   --transition-fast:   0.15s ease;
   --transition-normal: 0.2s ease;
+
+  /* Pagefind UI theme */
+  --pagefind-ui-scale: 0.75;
+  --pagefind-ui-primary: #7c3aed;
+  --pagefind-ui-text: #e2e8f0;
+  --pagefind-ui-background: #0d1117;
+  --pagefind-ui-border: rgba(255, 255, 255, 0.08);
+  --pagefind-ui-tag: rgba(124, 58, 237, 0.2);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 8px;
+  --pagefind-ui-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 /* ============================================================
@@ -472,4 +483,56 @@ a.tag-chip:hover {
   background: var(--color-bg-elevated);
   color: var(--color-text);
   font-weight: 600;
+}
+
+/* ============================================================
+   PAGEFIND UI OVERRIDES
+   ============================================================ */
+
+/* Float the results drawer as a dropdown over page content */
+#search {
+  position: relative;
+}
+
+#search .pagefind-ui__drawer {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #0d1117;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(124, 58, 237, 0.12);
+  max-height: 60vh;
+  overflow-y: auto;
+  z-index: 50;
+  padding: 0.75rem;
+}
+
+/* Tighten up result cards */
+#search .pagefind-ui__result {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 0;
+}
+
+#search .pagefind-ui__result:last-child {
+  border-bottom: none;
+}
+
+#search .pagefind-ui__result-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+#search .pagefind-ui__result-excerpt {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Hide the "X results for" message to keep the dropdown compact */
+#search .pagefind-ui__message {
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+  padding: 0 0 0.5rem;
 }
