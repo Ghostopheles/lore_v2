@@ -108,7 +108,7 @@ input, button, textarea, select {
    BASE
    ============================================================ */
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-geist);
   font-size: var(--text-base);
   line-height: var(--leading-normal);
   color: var(--color-text);

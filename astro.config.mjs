@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 
 import embeds from 'astro-embed/integration';
 import mdx from "@astrojs/mdx";
@@ -11,5 +11,12 @@ export default defineConfig({
     trailingSlash: "always",
     image: {
         domains: ["ghst.tools"],
+    },
+    experimental: {
+        fonts: [{
+            provider: fontProviders.google(),
+            name: "Geist",
+            cssVariable: "--font-geist"
+        }]
     }
 });
