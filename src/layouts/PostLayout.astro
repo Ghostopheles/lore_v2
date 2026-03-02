@@ -4,26 +4,20 @@ import Nav from "../components/Nav.astro";
 import AuthorCard from "../components/AuthorCard.astro";
 
 interface Props {
-  frontmatter: {
-    title: string;
-    description?: string;
-    pubDate: string;
-    tags?: string[];
-  };
-  rawContent: () => string;
+  title: string;
+  description?: string;
+  pubDate: string;
+  tags?: string[];
+  readingTime: number;
 }
 
-const { frontmatter, rawContent } = Astro.props;
-const { title, description, pubDate, tags } = frontmatter;
+const { title, description, pubDate, tags, readingTime } = Astro.props;
 
 const formatted = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
   month: "long",
   day: "numeric",
 }).format(new Date(pubDate));
-
-const wordCount = rawContent().trim().split(/\s+/).length;
-const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 ---
 <!doctype html>
 <html lang="en">

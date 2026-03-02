@@ -1,13 +1,14 @@
 ---
+import { Image } from "astro:assets";
 import { AUTHOR } from "../config/author";
 ---
 <div class="author-card">
-  <img
+  <Image
     class="author-avatar"
     src={AUTHOR.avatar}
     alt={AUTHOR.name}
-    width="56"
-    height="56"
+    width={56}
+    height={56}
     loading="lazy"
     decoding="async"
   />

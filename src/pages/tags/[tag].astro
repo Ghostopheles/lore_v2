@@ -1,26 +1,18 @@
 ---
+import { getCollection } from "astro:content";
 import MainLayout from "../../components/MainLayout.astro";
 import PostCard from "../../components/PostCard.astro";
 
 export async function getStaticPaths() {
-  const mods = import.meta.glob<{
-    frontmatter: { title: string; description?: string; pubDate: string; tags?: string[] };
-    url?: string;
-  }>("../posts/*.md", { eager: true });
-
-  const posts = Object.values(mods).filter((p) => p.frontmatter.pubDate);
-  const allTags = [...new Set(posts.flatMap((p) => p.frontmatter.tags ?? []))];
+  const allPosts = await getCollection("posts");
+  const allTags = [...new Set(allPosts.flatMap((p) => p.data.tags ?? []))];
 
   return allTags.map((tag) => ({
     params: { tag },
     props: {
-      posts: posts
-        .filter((p) => p.frontmatter.tags?.includes(tag))
-        .sort(
-          (a, b) =>
-            new Date(b.frontmatter.pubDate).getTime() -
-            new Date(a.frontmatter.pubDate).getTime()
-        ),
+      posts: allPosts
+        .filter((p) => p.data.tags?.includes(tag))
+        .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()),
     },
   }));
 }
@@ -42,11 +34,11 @@ const { posts } = Astro.props;
   <section class="posts">
     {posts.map((post) => (
       <PostCard
-        title={post.frontmatter.title}
-        description={post.frontmatter.description}
-        pubDate={post.frontmatter.pubDate}
-        url={post.url!}
-        tags={post.frontmatter.tags}
+        title={post.data.title}
+        description={post.data.description}
+        pubDate={post.data.pubDate.toISOString()}
+        url={`/posts/${post.id}/`}
+        tags={post.data.tags}
       />
     ))}
   </section>

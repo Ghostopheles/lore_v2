@@ -4,5 +4,8 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
     site: "https://lore.ghst.tools",
-    trailingSlash: "always"
+    trailingSlash: "always",
+    image: {
+        domains: ["ghst.tools"],
+    },
 });

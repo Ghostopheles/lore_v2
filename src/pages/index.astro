@@ -1,19 +1,12 @@
 ---
+import { getCollection } from 'astro:content';
 import MainLayout from '../components/MainLayout.astro';
 import PostCard from '../components/PostCard.astro';
 
-const postModules = import.meta.glob<{
-  frontmatter: { title: string; description?: string; pubDate: string; tags?: string[] };
-  url?: string;
-}>('./posts/*.md', { eager: true });
-
-const sorted = Object.values(postModules)
-  .filter((p) => p.frontmatter.pubDate)
-  .sort(
-    (a, b) =>
-      new Date(b.frontmatter.pubDate!).getTime() -
-      new Date(a.frontmatter.pubDate!).getTime()
-  );
+const allPosts = await getCollection('posts');
+const sorted = allPosts.sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
 ---
 
 <MainLayout title="lore.ghst.tools" description="Dispatches from the void.">
@@ -26,11 +19,11 @@ const sorted = Object.values(postModules)
     <section class="posts">
       {sorted.map((post) => (
         <PostCard
-          title={post.frontmatter.title}
-          description={post.frontmatter.description}
-          pubDate={post.frontmatter.pubDate}
-          url={post.url!}
-          tags={post.frontmatter.tags}
+          title={post.data.title}
+          description={post.data.description}
+          pubDate={post.data.pubDate.toISOString()}
+          url={`/posts/${post.id}/`}
+          tags={post.data.tags}
         />
       ))}
     </section>
