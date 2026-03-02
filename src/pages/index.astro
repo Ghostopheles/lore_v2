@@ -1,11 +1,72 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import MainLayout from '../components/MainLayout.astro';
+import PostCard from '../components/PostCard.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const postModules = import.meta.glob<{
+  frontmatter: { title: string; description?: string; pubDate: string };
+  url?: string;
+}>('./posts/*.md', { eager: true });
+
+const sorted = Object.values(postModules)
+  .filter((p) => p.frontmatter.pubDate)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate!).getTime() -
+      new Date(a.frontmatter.pubDate!).getTime()
+  );
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<MainLayout title="lore.ghst.tools" description="Dispatches from the void.">
+  <section class="hero">
+    <h1 class="gradient-text">lore.ghst.tools</h1>
+    <p class="tagline">Dispatches from the void.</p>
+  </section>
+
+  {sorted.length > 0 ? (
+    <section class="posts">
+      {sorted.map((post) => (
+        <PostCard
+          title={post.frontmatter.title}
+          description={post.frontmatter.description}
+          pubDate={post.frontmatter.pubDate}
+          url={post.url!}
+        />
+      ))}
+    </section>
+  ) : (
+    <p class="empty">Nothing yet. Check back soon.</p>
+  )}
+</MainLayout>
+
+<style>
+  .hero {
+    padding: var(--space-20) 0 var(--space-12);
+  }
+
+  .hero h1 {
+    font-size: clamp(var(--text-3xl), 6vw, var(--text-5xl));
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: var(--leading-tight);
+    margin-bottom: var(--space-4);
+  }
+
+  .tagline {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    letter-spacing: 0.01em;
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-bottom: var(--space-8);
+  }
+
+  .empty {
+    color: var(--color-text-faint);
+    font-size: var(--text-sm);
+    padding: var(--space-8) 0;
+  }
+</style>

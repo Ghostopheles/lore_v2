@@ -1,0 +1,108 @@
+---
+import Head from "../components/Head.astro";
+import Nav from "../components/Nav.astro";
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+    pubDate: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+const { title, description, pubDate } = frontmatter;
+
+const formatted = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+}).format(new Date(pubDate));
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <Head title={title} description={description} />
+  </head>
+  <body>
+    <div class="starfield"></div>
+    <Nav />
+    <main>
+      <article>
+        <header>
+          <a href="/" class="back-link">← All posts</a>
+          <h1>{title}</h1>
+          <time datetime={pubDate}>{formatted}</time>
+        </header>
+        <div class="prose">
+          <slot />
+        </div>
+      </article>
+    </main>
+    <footer>
+      <div class="footer-inner">
+        <span>&copy; {new Date().getFullYear()} lore.ghst.tools</span>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  main {
+    max-width: var(--prose-width);
+    margin: 0 auto;
+    padding: var(--space-12) var(--padding-x) var(--space-24);
+  }
+
+  header {
+    margin-bottom: var(--space-10);
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: var(--text-sm);
+    color: var(--color-text-faint);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-6);
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover {
+    color: var(--color-accent-1);
+    text-decoration: none;
+  }
+
+  h1 {
+    font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
+    font-weight: 700;
+    line-height: var(--leading-tight);
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+    margin-bottom: var(--space-3);
+  }
+
+  time {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-8) 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-inner {
+    max-width: var(--prose-width);
+    margin: 0 auto;
+    padding: 0 var(--padding-x);
+    color: var(--color-text-faint);
+    font-size: var(--text-sm);
+  }
+</style>

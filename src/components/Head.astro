@@ -1,0 +1,29 @@
+---
+import Favicon from "../assets/Favicon.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "lore.ghst.tools",
+  description = "Dispatches from the void.",
+} = Astro.props;
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<title>{title}</title>
+<meta name="description" content={description} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={title} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url.href} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content="lore.ghst.tools" />
+
+<Favicon />

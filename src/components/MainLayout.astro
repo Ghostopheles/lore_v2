@@ -1,0 +1,47 @@
+---
+import Head from "./Head.astro";
+import Nav from "./Nav.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <Head title={title} description={description} />
+  </head>
+  <body>
+    <div class="starfield"></div>
+    <Nav />
+    <main class="container">
+      <slot />
+    </main>
+    <footer>
+      <div class="container footer-inner">
+        <span>&copy; {new Date().getFullYear()} lore.ghst.tools</span>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  main {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-24);
+    min-height: calc(100vh - 160px);
+  }
+
+  footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-8) 0;
+  }
+
+  .footer-inner {
+    color: var(--color-text-faint);
+    font-size: var(--text-sm);
+  }
+</style>
