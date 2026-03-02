@@ -72,7 +72,7 @@ This one is purely for fun. It shows the number of each character gender / body 
 
 ### Misc Graphs
 On top of the graphs shown above, I also have graphs showing the number of each class per race. There's far too many to list here, so I'm planning on rounding them up at the end of the event for one big super-post. If you're *really* interested in seeing these graphs *right now*, however, you can.
-- Simply navigate to `https://ghst.tools/media/lore/v2//08-14-24-graphs/Classes_<RaceNameHere>.png` and you'll be able to see the data.
+- Simply navigate to `https://ghst.tools/media/lore/v2/08-14-24-graphs/Classes_<RaceNameHere>.png` and you'll be able to see the data.
     - The race naming is in title case, so `Highmountain Tauren` becomes `HighmountainTauren`, `Mag'har Orc` becomes `MagharOrc`, and so on. Play around with it if you don't get it immediately.
     - Also `Undead/Forsaken` -> `Scourge` (Scourge is the internal name for the race)
 
