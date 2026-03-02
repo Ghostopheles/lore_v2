@@ -7,6 +7,6 @@ tags: ["meta"]
 
 # Hello, World!
 
-This is the first post. More to come.
+This is a test post. Bingus Bongus.
 
 Here's a link to https://www.wowhead.com/item=163800/poro.
