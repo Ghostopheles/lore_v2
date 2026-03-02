@@ -59,20 +59,20 @@ Some graphs may have total numbers that don't actually line up with the values s
 
 ### Races
 These are all the races seen during the week of ToA. Blue bars are Alliance races, red bars are Horde, and white bars are for races that can be on either faction.
-[![ToA2024 Race Graph](/img/08-14-24-graphs/RaceNumbers.png)](https://lore.ghst.tools/img/08-14-24-graphs/RaceNumbers.png)
+[![ToA2024 Race Graph](https://ghst.tools/media/lore/v2/08-14-24-graphs/RaceNumbers.png)](https://ghst.tools/media/lore/v2/08-14-24-graphs/RaceNumbers.png)
 
 ### Classes
 A graph of the number of each class that was logged during the week of ToA.
-[![ToA2024 Class Graph](/img/08-14-24-graphs/ClassNumbers.png)](https://lore.ghst.tools/img/08-14-24-graphs/ClassNumbers.png)
+[![ToA2024 Class Graph](https://ghst.tools/media/lore/v2/08-14-24-graphs/ClassNumbers.png)](https://ghst.tools/media/lore/v2/08-14-24-graphs/ClassNumbers.png)
 
 ### Character Gender by Class
 This one is purely for fun. It shows the number of each character gender / body type seen per class.
 
-[![ToA2024 Day One GenderByClass Graph](/img/08-14-24-graphs/GenderByClass.png)](https://lore.ghst.tools/img/08-14-24-graphs/GenderByClass.png)
+[![ToA2024 Day One GenderByClass Graph](https://ghst.tools/media/lore/v2/08-14-24-graphs/GenderByClass.png)](https://ghst.tools/media/lore/v2/08-14-24-graphs/GenderByClass.png)
 
 ### Misc Graphs
 On top of the graphs shown above, I also have graphs showing the number of each class per race. There's far too many to list here, so I'm planning on rounding them up at the end of the event for one big super-post. If you're *really* interested in seeing these graphs *right now*, however, you can.
-- Simply navigate to `https://lore.ghst.tools/img/08-14-24-graphs/Classes_<RaceNameHere>.png` and you'll be able to see the data.
+- Simply navigate to `https://ghst.tools/media/lore/v2//08-14-24-graphs/Classes_<RaceNameHere>.png` and you'll be able to see the data.
     - The race naming is in title case, so `Highmountain Tauren` becomes `HighmountainTauren`, `Mag'har Orc` becomes `MagharOrc`, and so on. Play around with it if you don't get it immediately.
     - Also `Undead/Forsaken` -> `Scourge` (Scourge is the internal name for the race)
 

@@ -48,17 +48,17 @@ If you middle-click on the images, it'll open them in a new tab and will be **mu
 
 ### Races
 These are all the races seen during day one of Tournament of Ages. Blue bars are Alliance races, red bars are Horde, and white bars are for races that can be on either faction.
-[![ToA2024 Day One Race Graph](/img/08-04-24-graphs/RaceNumbers.png)](https://lore.ghst.tools/img/08-04-24-graphs/RaceNumbers.png)
+[![ToA2024 Day One Race Graph](https://ghst.tools/media/lore/v2/08-04-24-graphs/RaceNumbers.png)](https://ghst.tools/media/lore/v2/08-04-24-graphs/RaceNumbers.png)
 
 ### Classes
 A graph of the number of each class that was logged during the first day.
-[![ToA2024 Day One Class Graph](/img/08-04-24-graphs/ClassNumbers.png)](https://lore.ghst.tools/img/08-04-24-graphs/ClassNumbers.png)
+[![ToA2024 Day One Class Graph](https://ghst.tools/media/lore/v2/08-04-24-graphs/ClassNumbers.png)](https://ghst.tools/media/lore/v2/08-04-24-graphs/ClassNumbers.png)
 
 ### Character Gender by Class
 This one is purely for fun. It shows the number of each character gender / body type seen per class.
 
 (yes I know it's a bit messed up, I'll fix it for tomorrow)
-[![ToA2024 Day One GenderByClass Graph](/img/08-04-24-graphs/GenderByClass.png)](https://lore.ghst.tools/img/08-04-24-graphs/GenderByClass.png)
+[![ToA2024 Day One GenderByClass Graph](https://ghst.tools/media/lore/v2/08-04-24-graphs/GenderByClass.png)](https://ghst.tools/media/lore/v2/08-04-24-graphs/GenderByClass.png)
 
 ### Misc Graphs
 On top of the graphs shown above, I also have graphs showing the number of each class per race. There's far too many to list here, so I'm planning on rounding them up at the end of the event for one big super-post. If you're *really* interested in seeing these graphs *right now*, however, you can.
