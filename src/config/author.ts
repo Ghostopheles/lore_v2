@@ -6,5 +6,6 @@ export const AUTHOR = {
     { label: "X",       href: "https://twitter.ghst.tools",           icon: "x"       },
     { label: "Bluesky", href: "https://bsky.app/profile/ghst.tools",  icon: "bluesky" },
     { label: "GitHub",  href: "https://github.ghst.tools",            icon: "github"  },
+    { label: "ko-fi",    href: "https://kofi.ghst.tools",             icon: "ko-fi"   },
   ],
 } as const;
