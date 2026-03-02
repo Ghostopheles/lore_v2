@@ -1,0 +1,108 @@
+---
+import MainLayout from "../../components/MainLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+
+export async function getStaticPaths() {
+  const mods = import.meta.glob<{
+    frontmatter: { title: string; description?: string; pubDate: string; tags?: string[] };
+    url?: string;
+  }>("../posts/*.md", { eager: true });
+
+  const posts = Object.values(mods).filter((p) => p.frontmatter.pubDate);
+  const allTags = [...new Set(posts.flatMap((p) => p.frontmatter.tags ?? []))];
+
+  return allTags.map((tag) => ({
+    params: { tag },
+    props: {
+      posts: posts
+        .filter((p) => p.frontmatter.tags?.includes(tag))
+        .sort(
+          (a, b) =>
+            new Date(b.frontmatter.pubDate).getTime() -
+            new Date(a.frontmatter.pubDate).getTime()
+        ),
+    },
+  }));
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<MainLayout title={`#${tag} — lore.ghst.tools`} description={`Posts tagged with ${tag}`}>
+  <section class="tag-header">
+    <a href="/" class="back-link">← All posts</a>
+    <h1>
+      <span class="label">Posts tagged</span>
+      <span class="tag-name gradient-text">#{tag}</span>
+    </h1>
+    <p class="count">{posts.length} {posts.length === 1 ? "post" : "posts"}</p>
+  </section>
+
+  <section class="posts">
+    {posts.map((post) => (
+      <PostCard
+        title={post.frontmatter.title}
+        description={post.frontmatter.description}
+        pubDate={post.frontmatter.pubDate}
+        url={post.url!}
+        tags={post.frontmatter.tags}
+      />
+    ))}
+  </section>
+</MainLayout>
+
+<style>
+  .tag-header {
+    padding: var(--space-16) 0 var(--space-10);
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: var(--text-sm);
+    color: var(--color-text-faint);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-6);
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover {
+    color: var(--color-accent-1);
+    text-decoration: none;
+  }
+
+  h1 {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    line-height: var(--leading-tight);
+    margin-bottom: var(--space-3);
+  }
+
+  .label {
+    font-size: var(--text-2xl);
+    font-weight: 400;
+    color: var(--color-text-muted);
+  }
+
+  .tag-name {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .count {
+    font-size: var(--text-sm);
+    color: var(--color-text-faint);
+    letter-spacing: 0.04em;
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-bottom: var(--space-8);
+  }
+</style>

@@ -298,6 +298,37 @@ nav, main, footer, header {
 }
 
 /* ============================================================
+   TAG CHIPS
+   ============================================================ */
+.tag-chip {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  padding: 0.2em 0.65em;
+  border-radius: 999px;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.22);
+  color: var(--color-accent-1);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  line-height: 1.6;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+a.tag-chip:hover {
+  background: rgba(124, 58, 237, 0.2);
+  border-color: rgba(124, 58, 237, 0.48);
+  text-decoration: none;
+  color: var(--color-accent-1);
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* ============================================================
    PROSE — Markdown-rendered content
    ============================================================ */
 .prose {

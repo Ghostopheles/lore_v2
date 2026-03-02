@@ -1,23 +1,29 @@
 ---
 import Head from "../components/Head.astro";
 import Nav from "../components/Nav.astro";
+import AuthorCard from "../components/AuthorCard.astro";
 
 interface Props {
   frontmatter: {
     title: string;
     description?: string;
     pubDate: string;
+    tags?: string[];
   };
+  rawContent: () => string;
 }
 
-const { frontmatter } = Astro.props;
-const { title, description, pubDate } = frontmatter;
+const { frontmatter, rawContent } = Astro.props;
+const { title, description, pubDate, tags } = frontmatter;
 
 const formatted = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
   month: "long",
   day: "numeric",
 }).format(new Date(pubDate));
+
+const wordCount = rawContent().trim().split(/\s+/).length;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 ---
 <!doctype html>
 <html lang="en">
@@ -32,7 +38,21 @@ const formatted = new Intl.DateTimeFormat("en-US", {
         <header>
           <a href="/" class="back-link">← All posts</a>
           <h1>{title}</h1>
-          <time datetime={pubDate}>{formatted}</time>
+          <div class="post-meta">
+            <time datetime={pubDate}>{formatted}</time>
+            <span class="meta-sep">·</span>
+            <span class="reading-time">{readingTime} min read</span>
+          </div>
+          <div class="author-meta-row">
+            <AuthorCard />
+            {tags && tags.length > 0 && (
+              <div class="tag-list post-header-tags">
+                {tags.map((tag) => (
+                  <a href={`/tags/${tag}/`} class="tag-chip">{tag}</a>
+                ))}
+              </div>
+            )}
+          </div>
         </header>
         <div class="prose">
           <slot />
@@ -56,6 +76,8 @@ const formatted = new Intl.DateTimeFormat("en-US", {
 
   header {
     margin-bottom: var(--space-10);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .back-link {
@@ -82,13 +104,32 @@ const formatted = new Intl.DateTimeFormat("en-US", {
     margin-bottom: var(--space-3);
   }
 
-  time {
-    display: block;
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
     font-size: var(--text-sm);
-    color: var(--color-text-faint);
+    color: var(--color-text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     font-weight: 500;
+  }
+
+  .meta-sep {
+    opacity: 0.5;
+  }
+
+  .author-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .post-header-tags {
+    justify-content: flex-end;
   }
 
   footer {

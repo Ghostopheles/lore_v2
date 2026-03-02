@@ -4,9 +4,10 @@ interface Props {
   description?: string;
   pubDate: string;
   url: string;
+  tags?: string[];
 }
 
-const { title, description, pubDate, url } = Astro.props;
+const { title, description, pubDate, url, tags } = Astro.props;
 
 const formatted = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
@@ -19,6 +20,11 @@ const formatted = new Intl.DateTimeFormat("en-US", {
     <time datetime={pubDate} class="post-date">{formatted}</time>
     <h2 class="post-title">{title}</h2>
     {description && <p class="post-desc">{description}</p>}
+    {tags && tags.length > 0 && (
+      <div class="tag-list post-tags">
+        {tags.map((tag) => <span class="tag-chip">{tag}</span>)}
+      </div>
+    )}
   </article>
 </a>
 
@@ -75,5 +81,9 @@ const formatted = new Intl.DateTimeFormat("en-US", {
     color: var(--color-text-muted);
     line-height: var(--leading-normal);
     margin-top: var(--space-2);
+  }
+
+  .post-tags {
+    margin-top: var(--space-4);
   }
 </style>
