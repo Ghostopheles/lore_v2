@@ -2,6 +2,7 @@
 title: "Ketho Ketho Ketho"
 description: "An important message for all readers."
 pubDate: 2024-07-28
+tags: ["meta"]
 ---
 
 # ketho
