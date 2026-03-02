@@ -47,7 +47,7 @@
 
   /* Layout */
   --prose-width:   68ch;
-  --content-width: 1100px;
+  --content-width: 1400px;
   --padding-x:     clamp(1.25rem, 5vw, 3rem);
 
   /* Spacing */

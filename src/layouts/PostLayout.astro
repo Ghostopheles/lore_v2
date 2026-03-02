@@ -37,16 +37,14 @@ const formatted = new Intl.DateTimeFormat("en-US", {
             <span class="meta-sep">·</span>
             <span class="reading-time">{readingTime} min read</span>
           </div>
-          <div class="author-meta-row">
-            <AuthorCard />
-            {tags && tags.length > 0 && (
-              <div class="tag-list post-header-tags">
-                {tags.map((tag) => (
-                  <a href={`/tags/${tag}/`} class="tag-chip">{tag}</a>
-                ))}
-              </div>
-            )}
-          </div>
+          <AuthorCard />
+          {tags && tags.length > 0 && (
+            <div class="tag-list post-header-tags">
+              {tags.map((tag) => (
+                <a href={`/tags/${tag}/`} class="tag-chip">{tag}</a>
+              ))}
+            </div>
+          )}
         </header>
         <div class="prose">
           <slot />
@@ -63,15 +61,24 @@ const formatted = new Intl.DateTimeFormat("en-US", {
 
 <style>
   main {
-    max-width: var(--prose-width);
+    max-width: 1400px;
     margin: 0 auto;
-    padding: var(--space-12) var(--padding-x) var(--space-24);
+    padding: var(--space-10) var(--padding-x) var(--space-24);
   }
 
+  article {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0 var(--space-16);
+    align-items: start;
+  }
+
+  /* ── Sidebar (header) ────────────────────────── */
   header {
-    margin-bottom: var(--space-10);
-    padding-bottom: var(--space-8);
-    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: calc(4rem + var(--space-6));
+    padding-right: var(--space-8);
+    border-right: 1px solid var(--color-border);
   }
 
   .back-link {
@@ -90,10 +97,10 @@ const formatted = new Intl.DateTimeFormat("en-US", {
   }
 
   h1 {
-    font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
+    font-size: clamp(var(--text-xl), 2.5vw, var(--text-3xl));
     font-weight: 700;
-    line-height: var(--leading-tight);
-    letter-spacing: -0.03em;
+    line-height: var(--leading-snug);
+    letter-spacing: -0.02em;
     color: var(--color-text);
     margin-bottom: var(--space-3);
   }
@@ -101,43 +108,64 @@ const formatted = new Intl.DateTimeFormat("en-US", {
   .post-meta {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: var(--space-2);
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
     color: var(--color-text-muted);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     font-weight: 500;
+    margin-bottom: var(--space-1);
   }
 
   .meta-sep {
     opacity: 0.5;
   }
 
-  .author-meta-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-6);
-    margin-top: var(--space-6);
-    flex-wrap: wrap;
-  }
-
   .post-header-tags {
-    justify-content: flex-end;
+    margin-top: var(--space-4);
+    justify-content: flex-start;
   }
 
+  /* ── Prose (content) ─────────────────────────── */
+  .prose {
+    min-width: 0; /* prevent grid blowout on long words */
+  }
+
+  /* ── Footer ──────────────────────────────────── */
   footer {
     border-top: 1px solid var(--color-border);
     padding: var(--space-8) 0;
     position: relative;
     z-index: 1;
+    margin-top: var(--space-8);
   }
 
   .footer-inner {
-    max-width: var(--prose-width);
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 var(--padding-x);
     color: var(--color-text-faint);
     font-size: var(--text-sm);
+  }
+
+  /* ── Mobile: stack sidebar above content ─────── */
+  @media (max-width: 768px) {
+    article {
+      grid-template-columns: 1fr;
+      gap: var(--space-8) 0;
+    }
+
+    header {
+      position: static;
+      padding-right: 0;
+      border-right: none;
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    h1 {
+      font-size: var(--text-2xl);
+    }
   }
 </style>

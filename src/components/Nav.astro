@@ -1,8 +1,11 @@
 ---
 ---
 <nav>
-  <div class="container nav-inner">
-    <a href="/" class="wordmark">lore.ghst.tools</a>
+  <div class="nav-inner">
+    <a href="/" class="wordmark">Home</a>
+    <div class="nav-links">
+      <a href="/links/" class="nav-link">Links</a>
+    </div>
   </div>
 </nav>
 
@@ -31,8 +34,12 @@
   }
 
   .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--padding-x);
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
   .wordmark {
@@ -45,6 +52,26 @@
   }
 
   .wordmark:hover {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .nav-link {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-faint);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color var(--transition-fast);
+  }
+
+  .nav-link:hover {
     color: var(--color-text);
     text-decoration: none;
   }
