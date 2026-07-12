@@ -2,6 +2,10 @@ name: Deploy to GitHub Pages
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - '*'
+
 
 # Allow this job to clone the repo and create a page deployment
 permissions:
