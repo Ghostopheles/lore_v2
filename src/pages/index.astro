@@ -11,7 +11,7 @@ const sorted = allPosts.sort(
 
 <MainLayout title="Ghost's Lore" description="Dispatches from the void.">
   <section class="hero">
-    <h1 class="gradient-text">Ghost's Lore</h1>
+    <h1>Ghost's Lore</h1>
     <p class="tagline">Dispatches from the void.</p>
   </section>
 
@@ -39,10 +39,10 @@ const sorted = allPosts.sort(
 
   .hero h1 {
     font-size: clamp(var(--text-3xl), 6vw, var(--text-5xl));
-    font-weight: 800;
-    letter-spacing: -0.04em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     line-height: var(--leading-tight);
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
   }
 
   .tagline {
@@ -54,7 +54,7 @@ const sorted = allPosts.sort(
   .posts {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    border-top: 1px solid var(--color-border);
     padding-bottom: var(--space-8);
   }
 
