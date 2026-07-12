@@ -434,6 +434,15 @@ a.tag-chip:hover {
   margin-top: var(--space-2);
 }
 
+.prose li.task-list-item {
+  list-style: none;
+}
+
+.prose input[type="checkbox"] {
+  cursor: pointer;
+  margin-right: var(--space-2);
+}
+
 .prose hr {
   border: none;
   border-top: 1px solid var(--color-border);

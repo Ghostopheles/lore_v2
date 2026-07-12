@@ -51,6 +51,14 @@ const formatted = new Intl.DateTimeFormat("en-US", {
         </div>
       </article>
     </main>
+
+    <script>
+      document
+        .querySelectorAll<HTMLInputElement>(".prose input[type=checkbox]")
+        .forEach((el) => {
+          el.disabled = false;
+        });
+    </script>
     <footer>
       <div class="footer-inner">
         <span>&copy; {new Date().getFullYear()} lore.ghst.tools</span>
