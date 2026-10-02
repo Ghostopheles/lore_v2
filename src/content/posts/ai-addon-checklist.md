@@ -18,9 +18,12 @@ A brief set of characteristics common to vibecoded WoW addons.
 	- [ ] “Powerful”
 	- [ ] “Everything works”
 	- [ ] “Self-contained”
+	- [ ] "Engine"
+	- [ ] "Easy to install"
+- [ ] Useless section explaining "how it works" in unnecessary detail
 - [ ] “Quickstart” section for no reason
 - [ ] Em dashes
-- [ ] Bold text proclaiming something insignificant in this context
+- [ ] Bold text proclaiming something insignificant
 - [ ] “No X, no Y — just Z.”
 - [ ] “No \<thing that barely exists in WoW addons>, ever.”
 - [ ] Unnecessary list of features
